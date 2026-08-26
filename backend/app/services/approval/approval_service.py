@@ -33,6 +33,8 @@ class ApprovalService:
         db.add(approval)
         db.flush()
 
+        step_count = 0
+
         for sequence, decision in enumerate(
             policy_decisions,
             1
@@ -55,12 +57,14 @@ class ApprovalService:
             )
 
             db.add(step)
+            step_count+=1
 
-        db.flush()
-
-        if not approval.steps:
+        if step_count == 0:
             raise ValueError(
-                "Policy decisions did not produce any approval steps"
+                "Policy decisions did not produce "
+                "any approval steps"
             )
+        
+        db.flush()
 
         return approval

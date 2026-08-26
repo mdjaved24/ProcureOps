@@ -7,7 +7,8 @@ from app.core.config import settings
 from app.core.database import engine
 from app.api.auth import auth_router
 from app.api.procurement.procurement_api import procurement_router
-from app.api.dev_auth_check import test_auth_router
+from app.api.approval.approval import approval_router
+
 
 
 app = FastAPI(
@@ -19,7 +20,8 @@ app = FastAPI(
 
 app.include_router(auth_router)
 app.include_router(procurement_router)
-app.include_router(test_auth_router)
+app.include_router(approval_router)
+
 
 
 @app.get("/health")

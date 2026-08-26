@@ -3,7 +3,7 @@ from sqlalchemy import text
 from app.core.database import SessionLocal
 
 
-PURCHASE_REQUEST_ID = 1
+PURCHASE_REQUEST_ID = 3
 
 
 def main():
@@ -41,7 +41,7 @@ def main():
                         required_role,
                         sequence,
                         status,
-                        approved_by,
+                        decided_by,
                         decision_at
                     FROM approval_steps
                     WHERE approval_id = :approval_id

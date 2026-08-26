@@ -15,13 +15,19 @@ VALID_TRANSITIONS = {
         PurchaseRequestStatus.CANCELLED,
     },
     PurchaseRequestStatus.UNDER_REVIEW: {
-        PurchaseRequestStatus.APPROVAL_PENDING,
-        PurchaseRequestStatus.REJECTED,
+    PurchaseRequestStatus.APPROVAL_PENDING,
+    PurchaseRequestStatus.REJECTED,
+    PurchaseRequestStatus.CANCELLED,
     },
     PurchaseRequestStatus.APPROVAL_PENDING: {
         PurchaseRequestStatus.APPROVED,
         PurchaseRequestStatus.REJECTED,
+        PurchaseRequestStatus.CHANGES_REQUESTED,
     },
+    PurchaseRequestStatus.CHANGES_REQUESTED: {
+    PurchaseRequestStatus.UNDER_REVIEW,
+    PurchaseRequestStatus.CANCELLED,
+    },  
     PurchaseRequestStatus.APPROVED: {
         PurchaseRequestStatus.COMPLETED,
     },

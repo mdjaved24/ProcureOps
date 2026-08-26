@@ -9,3 +9,4 @@ bcrypt
 PyJWT
 pydantic[email]
 pytest
+redis

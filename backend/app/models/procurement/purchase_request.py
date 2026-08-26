@@ -14,17 +14,18 @@ from sqlalchemy.sql import func
 
 from app.core.database import Base
 
-
 class PurchaseRequestStatus(str, Enum):
     DRAFT = "DRAFT"
     SUBMITTED = "SUBMITTED"
     UNDER_REVIEW = "UNDER_REVIEW"
     APPROVAL_PENDING = "APPROVAL_PENDING"
+    CHANGES_REQUESTED = "CHANGES_REQUESTED"
     APPROVED = "APPROVED"
     REJECTED = "REJECTED"
-    CANCELLED = "CANCELLED"     
+    CANCELLED = "CANCELLED"
     COMPLETED = "COMPLETED"
 
+    
 
 class PurchaseRequest(Base):
     __tablename__ = "purchase_requests"

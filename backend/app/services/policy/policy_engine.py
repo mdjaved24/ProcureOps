@@ -69,41 +69,29 @@ class PolicyEngine:
         return False
 
 
+
     @staticmethod
-    def evaluate(
-        db: Session,
-        policy_code: str,
+    def evaluate_policy(
+        policy: dict[str, Any],
         context: dict[str, Any],
-    ) -> list[dict[str, Any]]:
-        policy = db.query(Policy).filter(
-            Policy.policy_code==policy_code, 
-            Policy.is_active.is_(True)
-            ).first()
-
-        if policy is None:
-            return []
-
-        rules = db.query(PolicyRule).filter(
-            PolicyRule.policy_id==policy.id,
-            PolicyRule.is_active.is_(True)
-        ).order_by(PolicyRule.priority.desc()).all()
-
+    )-> list[dict[str, Any]]:
         decisions = []
 
-        for rule in rules:
+        for rule in policy.get("rules", []):
             matched = PolicyEngine.evaluate_condition(
-                condition=rule.condition,
-                context=context
+                condition=rule['condition'],
+                context=context,
             )
 
             if matched:
                 decisions.append(
                     {
-                        "rule_code": rule.rule_code,
-                        "rule_name": rule.name,
-                        "action": rule.action,
+                        "rule_code": rule["rule_code"],
+                        "rule_name": rule["name"],
+                        "action": rule["action"],
                     }
                 )
 
         return decisions
+        
     

@@ -54,7 +54,7 @@ class ApprovalStep(Base):
         default=ApprovalStepStatus.PENDING.value,
     )
 
-    approved_by = Column(
+    decided_by = Column(
         Integer,
         ForeignKey("users.id"),
         nullable=True,
@@ -63,6 +63,11 @@ class ApprovalStep(Base):
     decision_at = Column(
         DateTime(timezone=True),
         nullable=True,
+    )
+
+    decision_comments = Column(
+    String(2000),
+    nullable=True,
     )
 
     created_at = Column(

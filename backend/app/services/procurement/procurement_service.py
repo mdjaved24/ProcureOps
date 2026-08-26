@@ -135,11 +135,10 @@ class ProcurementService:
             context=context,
         )
 
-        purchase_request.policy_id = policy.id
+        purchase_request.policy_id = policy["id"]
 
-        decisions = PolicyEngine.evaluate(
-            db=db,
-            policy_code=policy.policy_code,
+        decisions = PolicyEngine.evaluate_policy(
+            policy=policy,
             context=context,
         )
 
@@ -160,6 +159,3 @@ class ProcurementService:
         )
 
         return approval
-
-
-            
