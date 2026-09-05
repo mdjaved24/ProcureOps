@@ -19,8 +19,6 @@ class PurchaseRequestCreate(BaseModel):
 
     description: str | None = None
 
-    estimated_amount: Decimal = Field(gt=0)
-
     currency: str = Field(
         default="INR",
         min_length=3,
@@ -67,3 +65,53 @@ class PurchaseRequestResponse(BaseModel):
     updated_at: datetime
 
     items: list[PurchaseRequestItemResponse]
+
+
+
+class PurchaseRequestItemUpdate(BaseModel):
+
+    item_name: str = Field(
+        min_length=1,
+        max_length=255,
+    )
+
+    description: str | None = Field(
+        default=None,
+        max_length=500,
+    )
+
+    quantity: Decimal = Field(
+        gt=0,
+    )
+
+    unit: str = Field(
+        min_length=1,
+        max_length=50,
+    )
+
+    estimated_unit_price: Decimal = Field(
+        gt=0,
+    )
+
+
+class PurchaseRequestResubmitUpdate(BaseModel):
+
+    title: str = Field(
+        min_length=1,
+        max_length=255,
+    )
+
+    description: str | None = None
+
+    department_id: int
+
+    currency: str = Field(
+        min_length=3,
+        max_length=3,
+    )
+
+    required_by_date: datetime | None = None
+
+    items: list[PurchaseRequestItemUpdate] = Field(
+        min_length=1,
+    )

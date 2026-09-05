@@ -12,6 +12,7 @@ VALID_TRANSITIONS = {
     },
     PurchaseRequestStatus.SUBMITTED: {
         PurchaseRequestStatus.UNDER_REVIEW,
+        PurchaseRequestStatus.APPROVED,
         PurchaseRequestStatus.CANCELLED,
     },
     PurchaseRequestStatus.UNDER_REVIEW: {
@@ -26,6 +27,7 @@ VALID_TRANSITIONS = {
     },
     PurchaseRequestStatus.CHANGES_REQUESTED: {
     PurchaseRequestStatus.UNDER_REVIEW,
+    PurchaseRequestStatus.SUBMITTED,
     PurchaseRequestStatus.CANCELLED,
     },  
     PurchaseRequestStatus.APPROVED: {

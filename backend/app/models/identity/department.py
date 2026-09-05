@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
 from app.core.database import Base
@@ -21,13 +21,4 @@ class Department(Base):
         nullable=True,
     )
 
-    is_active = Column(
-        Boolean,
-        nullable=False,
-        default=True,
-    )
-
-    users = relationship(
-        "User",
-        back_populates="department",
-    )
+    users = relationship("User",back_populates="department")

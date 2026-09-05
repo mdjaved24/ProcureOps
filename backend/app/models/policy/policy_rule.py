@@ -69,6 +69,4 @@ class PolicyRule(Base):
         default=True,
     )
 
-    policy = relationship(
-        "Policy",
-    )
+    policy = relationship("Policy")

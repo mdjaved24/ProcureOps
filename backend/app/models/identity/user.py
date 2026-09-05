@@ -1,5 +1,7 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from datetime import datetime
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 
 from app.core.database import Base
 
@@ -49,12 +51,26 @@ class User(Base):
         default=True,
     )
 
-    role = relationship(
-        "Role",
-        back_populates="users",
+    created_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
     )
 
-    department = relationship(
-        "Department",
-        back_populates="users",
+    updated_at = Column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+        onupdate=func.now(),
+    )
+
+    role = relationship("Role",back_populates="users")
+
+    department = relationship("Department", back_populates="users")
+
+    vendor_user = relationship(
+        "VendorUser",
+        back_populates="user",
+        uselist=False,
+        lazy="select",
     )

@@ -64,12 +64,11 @@ class Approval(Base):
         onupdate=func.now(),
     )
 
-    purchase_request = relationship(
-        "PurchaseRequest",
-    )
+    purchase_request = relationship("PurchaseRequest")
 
     steps = relationship(
         "ApprovalStep",
         back_populates="approval",
         cascade="all, delete-orphan",
+        order_by="ApprovalStep.sequence",
     )

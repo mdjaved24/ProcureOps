@@ -14,6 +14,23 @@ class Settings(BaseSettings):
     database_url: str
 
     REDIS_URL: str
+    HF_TOKEN: str
+
+    CORS_ORIGINS: str
+
+    groq_api_key: str
+    groq_model: str
+    groq_temperature: float = 0.1  # with default value
+    groq_timeout: int = 30  # with default value
+
+    CHROMA_PERSIST_DIRECTORY: str = "data/chroma_db"
+    CHROMA_COLLECTION_NAME: str = "procureops_knowledge_base"
+
+    LANGGRAPH_STRICT_MSGPACK: str = "false"
+    LANGSMITH_TRACING: str
+    LANGSMITH_API_KEY: str
+    LANGSMITH_PROJECT: str
+    LANGSMITH_ENDPOINT: str
 
     model_config = SettingsConfigDict(
         env_file=".env",

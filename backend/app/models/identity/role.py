@@ -27,10 +27,7 @@ class Role(Base):
         default=True,
     )
 
-    users = relationship(
-        "User",
-        back_populates="role",
-    )
+    users = relationship("User",back_populates="role")
 
     permissions = relationship(
         "Permission",

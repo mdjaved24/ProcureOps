@@ -18,6 +18,7 @@ class ApprovalStepStatus(str, Enum):
     APPROVED = "APPROVED"
     REJECTED = "REJECTED"
     SKIPPED = "SKIPPED"
+    CHANGES_REQUESTED = "CHANGES_REQUESTED"
 
 
 class ApprovalStep(Base):
@@ -65,10 +66,7 @@ class ApprovalStep(Base):
         nullable=True,
     )
 
-    decision_comments = Column(
-    String(2000),
-    nullable=True,
-    )
+    decision_comments = Column(String(2000),nullable=True)
 
     created_at = Column(
         DateTime(timezone=True),
@@ -76,11 +74,6 @@ class ApprovalStep(Base):
         server_default=func.now(),
     )
 
-    approval = relationship(
-        "Approval",
-        back_populates="steps",
-    )
+    approval = relationship("Approval",back_populates="steps")
 
-    approver = relationship(
-        "User",
-    )
+    approver = relationship("User")

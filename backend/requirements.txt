@@ -10,3 +10,13 @@ PyJWT
 pydantic[email]
 pytest
 redis
+langchain
+langgraph
+langchain-groq
+langchain-chroma 
+langchain-huggingface 
+sentence-transformers
+langchain-community 
+unstructured
+markdown
+mcp

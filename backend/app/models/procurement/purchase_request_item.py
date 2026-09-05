@@ -59,7 +59,4 @@ class PurchaseRequestItem(Base):
         nullable=False,
     )
 
-    purchase_request = relationship(
-        "PurchaseRequest",
-        back_populates="items",
-    )
+    purchase_request = relationship("PurchaseRequest",back_populates="items")

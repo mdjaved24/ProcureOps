@@ -8,8 +8,6 @@ from app.models.procurement import (
     PurchaseRequest,
     PurchaseRequestItem,
     PurchaseRequestStatus,
-    Vendor,
-    VendorStatus,
 )
 
 
@@ -28,6 +26,33 @@ from app.models.approval.approval_step import (
     ApprovalStepStatus,
 )
 
+from app.models.audit.audit_log import (
+    AuditActorType,
+    AuditLog
+)
+
+
+from app.models.vendor.vendor import (
+    VendorStatus,
+    Vendor
+)
+
+from app.models.quotation_requests.rfq import RFQ
+from app.models.quotation_requests.rfq_item import RFQItem
+from app.models.quotation_requests.rfq_vendor import RFQVendor
+
+
+from app.models.quotation.quotation import Quotation
+from app.models.quotation.quotation_item import QuotationItem
+
+from app.models.memory.conversation_memory import ConversationMemory
+from app.models.rag.rag_documents import RAGDocument
+
+from app.models.vendor.vendor_user import (
+    VendorUser
+)
+
+
 
 __all__ = [
     "Department",
@@ -38,12 +63,22 @@ __all__ = [
     "PurchaseRequest",
     "PurchaseRequestItem",
     "PurchaseRequestStatus",
-    "Vendor",
-    "VendorStatus",
     "Policy",
     "PolicyRule",
     "Approval",
     "ApprovalStatus",
     "ApprovalStep",
     "ApprovalStepStatus",
+    "AuditActorType",
+    "AuditLog",
+    "VendorStatus",
+    "Vendor",
+    "RFQ",
+    "RFQItem",
+    "RFQVendor",
+    "Quotation",
+    "QuotationItem",
+    "RAGDocument",
+    "ConversationMemory",
+    "VendorUser"
 ]

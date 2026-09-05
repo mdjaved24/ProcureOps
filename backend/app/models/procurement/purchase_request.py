@@ -123,6 +123,6 @@ class PurchaseRequest(Base):
         cascade="all, delete-orphan",
     )
 
-    policy = relationship(
-    "Policy",
-    )
+    policy = relationship("Policy")
+
+    rfqs = relationship("RFQ",back_populates="purchase_request")
