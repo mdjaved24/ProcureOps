@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String
 from sqlalchemy.orm import relationship
 
 from app.core.database import Base
@@ -19,6 +19,12 @@ class Department(Base):
     description = Column(
         String(255),
         nullable=True,
+    )
+
+    is_active = Column(
+        Boolean,
+        nullable=False,
+        default=True,
     )
 
     users = relationship("User",back_populates="department")
